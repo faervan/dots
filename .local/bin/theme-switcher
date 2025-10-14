@@ -1,0 +1,26 @@
+#!/bin/bash
+
+bg_path=$(cat ~/.config/theme-switcher/wallpaper.conf | grep WALLPAPER_PATH= | cut -b 16-)
+index=$(cat ~/.config/theme-switcher/wallpaper.conf | grep INDEX= | cut -b 7-)
+i=$index
+
+shopt -s nullglob
+files=($bg_path/*)
+numfiles=${#files[@]}
+
+if [ $1 ]; then
+	if [ $1 = 'next' -a $i -lt $numfiles ]; then
+		((i++))
+	elif [ $1 = 'next' ]; then
+		i=1
+	elif [ $1 = 'prev' -a $i -gt 1 ]; then
+		((i--))
+	elif [ $1 = 'prev' ]; then
+		i=$numfiles
+	fi
+fi
+
+swww img -t grow --transition-duration 1 --transition-pos 0.65,0.4 --transition-step=20 ${files[$((i-1))]}
+
+sed -i 's/INDEX='$index'/INDEX='$i'/' /home/stk/.config/theme-switcher/wallpaper.conf
+echo "$i/$numfiles"
