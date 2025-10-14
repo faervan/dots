@@ -1,0 +1,40 @@
+* {
+	background: transparent;
+	color: --wofi-color1;
+}
+
+#window {
+	background-color: rgba(--wofi-rgb-color0, 0.7);
+	border-radius: 10px;
+}
+
+#outer-box {
+	margin-bottom: 10px;
+	margin: 10px;
+}
+
+#input {
+	background-color: rgba(--wofi-rgb-color0, 0.7);
+	border: 2px solid --wofi-color2;	
+	outline: none;
+	margin-bottom: 5px;
+}
+
+#img {
+	margin-right: 5px;
+}
+
+#inner-box {
+	padding: 0 10px;
+}
+
+#entry {
+	background-color: rgba(--wofi-rgb-color0, 0);
+	border-radius: 5px;
+}
+
+#entry:selected {
+	background-color: rgba(--wofi-rgb-color2, 1);
+	border: none;
+	outline: none;
+}
